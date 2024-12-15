@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭留言板 - 登录</title>
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .role-button {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .dad { background-color: #4A90E2; color: white; }
+        .mom { background-color: #E24A4A; color: white; }
+        .child { background-color: #FFB6C1; color: white; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>选择您的身份</h1>
+        <button class="role-button dad" onclick="login('dad')">爸爸</button>
+        <button class="role-button mom" onclick="login('mom')">妈妈</button>
+        <button class="role-button child" onclick="login('child')">孩子</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html> 

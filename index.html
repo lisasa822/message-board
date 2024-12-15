@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭留言板</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .message-board {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .date-divider {
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+        }
+        .note {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .dad-note { background-color: #E3F2FD; }
+        .mom-note { background-color: #FFEBEE; }
+        .child-note { background-color: #FCE4EC; }
+        .add-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-board" id="messageBoard">
+        <div class="date-divider">2024年3月19日</div>
+    </div>
+    <div class="control-panel">
+        <button onclick="clearOldNotes()">清理旧记录</button>
+    </div>
+    <button class="add-button" onclick="showAddNoteDialog()">+</button>
+    <script src="main.js"></script>
+</body>
+</html> 

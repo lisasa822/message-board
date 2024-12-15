@@ -1,0 +1,283 @@
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .message-board {
+        padding: 5px;
+        gap: 5px;
+    }
+    .note {
+        width: calc(50% - 15px);
+    }
+}
+
+@media (min-width: 769px) {
+    .message-board {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* 修改添加便签对话框样式 */
+.add-note-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 录音按钮样式 */
+.recording-button {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 在现有样式的基础上添加 */
+
+.dialog-content {
+    width: 240px;
+    min-height: auto;
+    padding: 15px;
+    border-radius: 0;
+    position: relative;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transform: rotate(-1deg);
+}
+
+/* 根据用户角色设置对话框颜色 */
+.dad .dialog-content { background: #E3F2FD; }
+.mom .dialog-content { background: #FFEBEE; }
+.child .dialog-content { background: #FCE4EC; }
+
+/* 添加便签效果 */
+.dialog-content::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 15px;
+    background: rgba(0,0,0,0.1);
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+}
+
+.dialog-content textarea {
+    width: calc(100% - 10px);
+    height: 100px;
+    margin: 10px 0;
+    padding: 5px;
+    border: none;
+    background: transparent;
+    resize: none;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.button-group button {
+    padding: 4px 8px;
+    border: none;
+    background: rgba(0,0,0,0.1);
+    color: #333;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.button-group button:hover {
+    background: rgba(0,0,0,0.2);
+}
+
+#recordButton.recording {
+    background: #ff4444;
+    color: white;
+}
+
+/* 修改便签样式 */
+.note {
+    break-inside: avoid;      /* 防止便签被分割 */
+    page-break-inside: avoid; /* 兼容性支持 */
+    margin-bottom: 10px;      /* 便签之间的垂直间距 */
+    display: inline-block;    /* 必须的，用于列布局 */
+    width: 100%;             /* 占满列宽 */
+    min-width: 120px;
+    max-width: none;         /* 移除最大宽度限制 */
+    padding: 12px;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+    animation: randomRotate 0.5s forwards;
+    cursor: move;
+    user-select: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dad-note { background: #E3F2FD; }
+.mom-note { background: #FFEBEE; }
+.child-note { background: #FCE4EC; }
+
+/* 随机旋转动画 */
+@keyframes randomRotate {
+    to {
+        transform: rotate(var(--random-rotate, -1deg));
+    }
+}
+
+/* 便签内容样式 */
+.note-content {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    word-break: break-word;
+    width: fit-content;  /* 根据内容适应宽度 */
+}
+
+/* 图片容器样式 */
+.image-container {
+    margin: 8px 0 0 0;
+    width: 100%;
+}
+
+/* 附件预览样式 */
+.attachment-preview {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    margin: 0;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    object-fit: contain;
+}
+
+.attachment-preview:hover {
+    transform: scale(1.05);
+}
+
+/* 图片放大层样式 */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    background: white;
+}
+
+.image-modal.active {
+    display: flex;
+}
+
+.audio-player {
+    width: calc(100% - 4px);
+    margin: 8px 0 0 0;
+    height: 24px;
+}
+
+/* 删除按钮样式 */
+.note .delete-button {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    padding: 2px 4px;
+    font-size: 12px;
+    background: rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.note:hover .delete-button {
+    opacity: 1;
+}
+
+/* 修改留言板样式 */
+.message-board {
+    column-count: 4;          /* 设置列数 */
+    column-gap: 10px;         /* 列间距 */
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 日期分割线样式 */
+.date-divider {
+    column-span: all;         /* 日期横跨所有列 */
+    margin: 15px 0 8px 0;
+    padding: 0 0 3px 0;
+    color: #666;
+    font-size: 13px;
+    border-bottom: 1px dashed #ccc;
+} 
+
+/* 添加拖拽相关样式 */
+.note.dragging {
+    opacity: 0.5;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.note.drag-over {
+    transform: scale(1.02);
+}
+
+/* 拖拽时的占位样式 */
+.note-placeholder {
+    border: 2px dashed #ccc;
+    background: transparent;
+    margin: 0;
+    padding: 12px;
+    min-width: 120px;
+    max-width: 300px;
+    height: 100px;
+    opacity: 0.5;
+}
+
+/* 响应式布局调整 */
+@media (max-width: 1200px) {
+    .message-board {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 900px) {
+    .message-board {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .message-board {
+        column-count: 1;
+    }
+}
